@@ -30,6 +30,7 @@ class ChainRegistrationPass implements CompilerPassInterface
             return;
         }
 
+        // Get tag`s and add to Registry master and member
         $registryDef = $container->findDefinition(ChainRegistry::class);
         $taggedServices = $container->findTaggedServiceIds(ChainRegistry::MEMBER_TAG);
         foreach ($taggedServices as $serviceId => $tags) {

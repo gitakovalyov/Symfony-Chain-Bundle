@@ -69,6 +69,7 @@ class ConsoleListener implements EventSubscriberInterface
         $commandName = $command->getName();
         $output = $event->getOutput();
 
+        // restrict to run directly member command. Disable command
         if ($this->chainRegistry->isChainMember($commandName)) {
             $masterName = $this->chainRegistry->getMasterForMember($commandName);
             $msg = sprintf(
@@ -82,6 +83,7 @@ class ConsoleListener implements EventSubscriberInterface
             return;
         }
 
+        // Logging master and it members
         if ($this->chainRegistry->isChainMaster($commandName)) {
             $this->isMasterExecuted = true;
             $this->masterCommandName = $commandName;
@@ -91,10 +93,10 @@ class ConsoleListener implements EventSubscriberInterface
                 '%s is a master command of a command chain that has registered member commands',
                 $commandName
             ));
-            foreach ($members as $m) {
+            foreach ($members as $member) {
                 $this->logger->info(sprintf(
                     '%s registered as a member of %s command chain',
-                    $m,
+                    $member,
                     $commandName
                 ));
             }

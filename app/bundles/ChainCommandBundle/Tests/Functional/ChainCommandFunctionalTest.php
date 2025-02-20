@@ -7,6 +7,12 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 
+/**
+ * Class ChainCommandFunctionalTest
+ *
+ * @author Oleksii Kovalov <akovalyov@gmail.com>
+ * @version 1.0
+ */
 class ChainCommandFunctionalTest extends KernelTestCase
 {
     /**
